@@ -1,1 +1,1 @@
-# PhD
+# pyStrategy
