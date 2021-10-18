@@ -1,18 +1,16 @@
 import setuptools
 from setuptools import setup
-try:
-    import pypandoc
-    long_description = pypandoc.convert('README.md', 'r')
-except(IOError, ImportError):
-    long_description = open('README.md').read()
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 
 setuptools.setup(
     name='pystrategy',
-    version="0.0.1",
+    version="0.0.4",
     author = 'Francisco A. Prieto Rodriguez, Francisco de Asís Fernández Navarro, David Becerra Alonso',
-    description = long_description,
-    long_description_content_type= 'text/markdown',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     url = 'https://github.com/faprieto96/pystrategy',
     packages = setuptools.find_packages(),
     classifiers= [

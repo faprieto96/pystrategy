@@ -1,21 +1,22 @@
 import numpy as np
 from zipfile import *
+from config_libaries import *
 
-
-def rollingWindowsValidation(obj, data, vars):
+def rollingWindowsValidation(parameters):
+    
     # Save number of elements and number of assets
-    (numData, N) = data.shape
+    (numData, N) = parameters['data'].shape
     
     # Initialize the weights matrix
-    W = np.zeros((vars.validationWindows, N))
+    W = np.zeros((parameters['vars_validationWindows'], N))
     
-    for i in range(0,(vars.validationWindows)):
-        W[[i]] = np.transpose(obj.solveOptimizationProblem(data[i:numData-vars.validationWindows+(i),:],vars))
+    for i in range(0,(parameters['vars_validationWindows'])):
+        W[[i]] = np.transpose(solveOptimizationProblem(parameters['data'][i:numData-parameters['vars_validationWindows']+(i),:]))
         
     
-    obj.w = W
-    a=obj.w
-    b=(data[data.shape[0] - vars.validationWindows:,:])
+    
+    a=W
+    b=(parameters['data'][parameters['data'].shape[0] - parameters['vars_validationWindows']:,:])
     #return np.multiply(x1, x2) obj.w * (data[data.shape[0] - vars.validationWindows:,:]).mean(axis=0)
     #(sum(OK'))';
     return np.multiply(a,b).sum(axis=1, dtype='float')

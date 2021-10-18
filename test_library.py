@@ -1,4 +1,5 @@
-import pystrategy_test_py as pystrategy
+import pystrategy
 
+pystrategy.Strategy(data, strategy, validationWindows, CVWindows))
 
 print(prueba)

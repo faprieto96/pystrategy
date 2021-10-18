@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: pystrategy
+Version: 0.0.4
+Summary: UNKNOWN
+Home-page: https://github.com/faprieto96/pystrategy
+Author: Francisco A. Prieto Rodriguez, Francisco de Asís Fernández Navarro, David Becerra Alonso
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+
+# pystrategy
+
+This is the repository for pystrategy package.
+
+No docutils, pandoc, or any other tricks! Just a `README.md` and a `setup.py`.
+
+See the source for this project here:
+<https://github.com/faprieto96/pystrategy>.
+
+## Background:
+
+This project is possible thanks to the previous research and effort of the work developed by Francisco de Asís, ...... References of previous research papers can be find:
+
+* Fernández-Navarro, F., Martínez-Nieto, L., Carbonero-Ruz, M., & Montero-Romero, T. (2021). Mean squared variance portfolio: A mixed-integer linear programming formulation. Mathematics, 9(3), <http://dx.doi.org/10.3390/math9030223>
+* etc
+
+## How to install pystrategy?
+```
+In your terminal windows:
+>>> python 3 pip install pystrategy
+```
+
+## Functions implemented:
+```
+>>> import pystrategy
+>>> Strategy(dataset, Strategy, validationWindows, CVWindows).run()
+```
+
+And much much more!
+

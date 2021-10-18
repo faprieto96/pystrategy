@@ -1,4 +1,4 @@
-from EW import EW
+from GMR import GMR
 from MaxDrawdown import MaxDrawdown 
 from Strategy import getWeights, rollingWindowsValidation
 #from Strategy import errorLoss, rollingWindowsValidation
@@ -12,23 +12,24 @@ class myarray(ndarray):
         return self.conj().T
 
 
+main_path='/Users/franciscoantonioprietorodriguez/Documents/PhD/GitHub_Code_Repository/PhD/'
+data_path=main_path+'data/6_Emerging_Markets_8years.csv'
 
+data= np.matrix(pd.read_csv(data_path, header=None))
 
-ewStrategy = EW(data)
+mvStrategy = GMR(data)
 
 class vars:
     pass
 
-class varsCV:
-    pass
 
 vars.validationWindows = 36
 vars.CVWindows = 12
 
-ewStrategy.config(data,vars, varsCV)
-returns = rollingWindowsValidation(ewStrategy,data,vars)
+mvStrategy.config(mvStrategy.obj, data,vars)
+returns = rollingWindowsValidation(mvStrategy,data,vars)
 
-w = getWeights(ewStrategy)
+w = getWeights(mvStrategy)
 
 [MDD, MDDs, MDDe, MDDr] = MaxDrawdown(returns)
 

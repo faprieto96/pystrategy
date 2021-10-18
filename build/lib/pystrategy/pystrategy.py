@@ -26,36 +26,19 @@ class vars:
 class varsCV:
     pass
 
-class input_parameters():
-    validationWindows=12
-    CVWindows=36
-    def __init__(self,data, strategy, validationWindows, CVWindows):
-        self.data=data
-        self.strategy=strategy
-        self.validationWindows=validationWindows
-        self.CVWindows=CVWindows
 
 
+class Strategy(vars, varsCV):
 
-class Strategy(vars,input_parameters):
-    validationWindows=12
-    CVWindows=36
-    strategy='EW'
-
-    
     def __init__(self, data, strategy, validationWindows, CVWindows):
         self.data=data
         self.strategy=strategy
         self.validationWindows=validationWindows
         self.CVWindows=CVWindows
-    @property
-    def data(self):
-        """Docstring goes here.
-        """
-        data.__doc__ = "A simple function that says hello... Richie style"
-        return self._data  
-    vars.validationWindows = validationWindows
-    vars.CVWindows = CVWindows
+        
+    
+    vars.validationWindows = 12
+    vars.CVWindows = 36
     
     def run(self):
         results={}
@@ -65,10 +48,10 @@ class Strategy(vars,input_parameters):
             returns = rollingWindowsValidation(strategy_selected,self.data,vars)
             results['returns'] = rollingWindowsValidation(strategy_selected,self.data,vars)
             results['weigths'] = getWeights(strategy_selected)
-            w = results['weigths']
+            w = getWeights(strategy_selected)
 
-            [MDD, MDDs, MDDe, MDDr] = MaxDrawdown(results['returns'])
-            
+            [MDD, MDDs, MDDe, MDDr] = MaxDrawdown(returns)
+
             MR = returns.mean()
             results['MR'] = MR
             SR = MR/np.std(returns)
@@ -81,10 +64,6 @@ class Strategy(vars,input_parameters):
             return results
         elif self.strategy=='GMR':
             return EW(data)
-
-
-Strategy()
-
 
 print('prueba')
 
