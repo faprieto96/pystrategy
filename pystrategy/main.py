@@ -5,21 +5,18 @@ from config_libaries import *
 
 main_path='/Users/franciscoantonioprietorodriguez/Documents/PhD/GitHub_Code_Repository/PhD/'
 data_path=main_path+'data/6_Emerging_Markets_8years.csv'
-
 data= np.matrix(pd.read_csv(data_path, header=None))
-
-
 
 
 #Generamos la funcion py_strategy que llama a la factoria y la función
 def py_strategy(str_name, optimizer, str_params, opt_params):
     """
     PY STRATEGY
-    :param str_name:
-    :param optimizer:
-    :param str_params:
-    :param opt_params:
-    :return:
+    :param str_name: Prueba de documentación
+    :param optimizer: Prueba de documentación
+    :param str_params: Prueba de documentación
+    :param opt_params: Prueba de documentación
+    :return: Prueba de documentación
     """
     #Obtención del nombre de la estrategia
     __inizialization=StrFactory.inizialization(str_name,str_params)
@@ -32,11 +29,12 @@ def py_strategy(str_name, optimizer, str_params, opt_params):
     
     return str_params
 
-_str_params = {'A': 1, 'B': 2, 'data':data, 'vars_validationWindows': 36, 'vars_CVWindows':12}
+#Data by default
+_str_params = {'data':data, 'vars_validationWindows': 36, 'vars_CVWindows':12}
 _opt_params = {'lambda': 0.2, 'beta': 0.1}
 
 
-res = py_strategy(StrTypes.EW, OptTypes.BAYES, _str_params, _opt_params)
+res = py_strategy(StrTypes.GMR, OptTypes.BAYES, _str_params, _opt_params)
 print('Output:', res)
 
 # class AStrategy(Strategy):

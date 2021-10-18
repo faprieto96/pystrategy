@@ -7,6 +7,7 @@ class StrFactory:
         StrTypes.STR2: Str2,
         StrTypes.STR8: Str8,
         StrTypes.EW: EW,
+        StrTypes.GMR: GMR,
         # Rellenar con tipos estrategias
     }
 

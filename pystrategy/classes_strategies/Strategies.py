@@ -65,9 +65,30 @@ class EW(Str):
         W = np.ones((N,1))*(1/N)
         return W
 
-    def prueba_fcn2(self, opt: Opt, *args, **kwargs):
-        return 'resultado_prueba_fcn_2'
 
+class GMR(Str):
+    
+    def inizialization(self, *args, **kwargs):
+        print('Params class:', self.args, self.kwargs)
+        print('Params Strategy Run:', args, kwargs)
+        #print('Optimizer:', opt.__class__)
+        
+        name = 'Global Maximum Return Strategy'
+        __inizialization={'name':name}
+        return __inizialization
+        
+    def solveOptimizationProblem(self, *args, **kwargs):
+        # Type: It returns the optimized weights
+        # Compute numbers of data points and assets 
+        (numElements, N) = args[0]['intermediate_data'].shape
+        # Compute the mean return
+        meanReturn=np.asarray(np.cumsum((np.mean(args[0]['intermediate_data'], axis=0)), axis=0))[0]
+        #Global maximun return approach
+        ValueMax = meanReturn.max()
+        indexMax=np.where(meanReturn==meanReturn.max())[0][0]
+        W = np.zeros((N,1))
+        W[[indexMax]]=1
+        return W
 # Rellenar con class <estrategias>
 
 class StrTypes:
@@ -75,4 +96,5 @@ class StrTypes:
     STR2 = 'str2'
     STR8 = 'str8'
     EW = 'EW'
+    GMR = 'GMR'
     # Rellenar con tipos STR_N estrategias
