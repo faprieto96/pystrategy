@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name='pystrategy',
-    version="0.0.4",
+    version="0.0.5",
     author = 'Francisco A. Prieto Rodriguez, Francisco de Asís Fernández Navarro, David Becerra Alonso',
     long_description=long_description,
     long_description_content_type='text/markdown',
