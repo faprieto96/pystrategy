@@ -23,7 +23,7 @@ In your terminal windows:
 ## Functions implemented:
 ```
 >>> import pystrategy
->>> Strategy(dataset, Strategy, validationWindows, CVWindows).run()
+>>> py_strategy(StrTypes.STRATEGY, OptTypes.OPTIMIZATION, _str_params, _opt_params)
 ```
 
 And much much more!

@@ -9,6 +9,7 @@ class Str:
     def __init__(self, *args, **kwargs):
         self.args = args
         self.kwargs = kwargs
+        
     @abstractmethod
     def run(self, opt, *args, **kwargs):
         ...
@@ -90,7 +91,7 @@ class GMR(Str):
         W = np.zeros((N,1))
         W[[indexMax]]=1
         return W
-# Rellenar con class <estrategias>
+
 
 class StrTypes:
     STR1 = 'str1'

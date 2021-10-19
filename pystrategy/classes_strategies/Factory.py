@@ -63,8 +63,6 @@ class StrFactory:
     
 
     
-
-
     @staticmethod
     def MaxDrawdown(name, str_params: dict):
         s_name = StrFactory.strategies.get(name)
