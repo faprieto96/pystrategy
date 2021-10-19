@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pystrategy
-Version: 0.0.4
+Version: 0.0.5
 Summary: UNKNOWN
 Home-page: https://github.com/faprieto96/pystrategy
 Author: Francisco A. Prieto Rodriguez, Francisco de Asís Fernández Navarro, David Becerra Alonso
@@ -37,7 +37,7 @@ In your terminal windows:
 ## Functions implemented:
 ```
 >>> import pystrategy
->>> Strategy(dataset, Strategy, validationWindows, CVWindows).run()
+>>> py_strategy(StrTypes.STRATEGY, OptTypes.OPTIMIZATION, _str_params, _opt_params)
 ```
 
 And much much more!

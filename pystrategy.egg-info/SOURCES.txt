@@ -1,13 +1,8 @@
 README.md
 setup.py
-pystrategy/EW.py
-pystrategy/EWStrategy.py
-pystrategy/GMR.py
-pystrategy/GMRStrategy.py
-pystrategy/MaxDrawdown.py
-pystrategy/Strategy.py
 pystrategy/__init__.py
-pystrategy/pystrategy.py
+pystrategy/config_libaries.py
+pystrategy/main.py
 pystrategy.egg-info/PKG-INFO
 pystrategy.egg-info/SOURCES.txt
 pystrategy.egg-info/dependency_links.txt

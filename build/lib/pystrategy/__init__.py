@@ -1,4 +1,3 @@
-import pystrategy
+from config_libaries import *
+from main import py_strategy
 
-
-__all__=['EWStrategy', 'resta_function']
