@@ -11,7 +11,9 @@ class myarray(ndarray):
     def H(self):
         return self.conj().T
 
-
+main_path='/Users/franciscoantonioprietorodriguez/Documents/PhD/GitHub_Code_Repository/PhD/'
+data_path=main_path+'data/6_Emerging_Markets_8years.csv'
+data= np.matrix(pd.read_csv(data_path, header=None))
 
 
 ewStrategy = EW(data)

@@ -63,6 +63,7 @@ class EW(Str):
         # mean and covariance
         
         W = np.ones((N,1))*(1/N)
+        
         return W
 
 

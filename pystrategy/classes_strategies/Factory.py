@@ -32,6 +32,7 @@ class StrFactory:
             str_params['intermediate_data']=str_params['data'][i:numData-str_params['vars_validationWindows']+(i),:]
             W[[i]] = np.transpose(s_object.solveOptimizationProblem(str_params))
             
+        str_params['W']=W
         a=W
         b=(str_params['data'][str_params['data'].shape[0] - str_params['vars_validationWindows']:,:])
         #return np.multiply(x1, x2) obj.w * (data[data.shape[0] - vars.validationWindows:,:]).mean(axis=0)
@@ -44,7 +45,8 @@ class StrFactory:
     def solveOptimizationProblem(name, str_params: dict):
         s_name = StrFactory.strategies.get(name)
         s_object = s_name(**str_params)
-        return s_object.solveOptimizationProblem(str_params)  
+        str_params['W'] = s_object.solveOptimizationProblem(str_params)
+        return str_params
     
     """#Metodo build corre la estrategia que se desee
     @staticmethod
@@ -95,4 +97,27 @@ class StrFactory:
         str_params['MDDe']=MDDe
         str_params['MDDr']=MDDr   
         return str_params
+
+    @staticmethod
+    def Output_financial_ratios(name, str_params: dict):
+        s_name = StrFactory.strategies.get(name)
+        s_object = s_name(**str_params)
+        # Save number of elements and number of assets
+        n = max(str_params['returns'].shape)
+        MR = str_params['returns'].mean()
+        SR = MR/np.std(str_params['returns'])
+
+        CR = MR/str_params['MDD']
+
+        (Q, N) = str_params['W'].shape
+        Turnover = (1/(Q-1))*(1/N)* sum(sum(abs(str_params['W'][2:,:]-str_params['W'][1:-1,:])))
+        str_params['MR']=MR
+        str_params['SR']=SR
+        str_params['CR']=CR
+        str_params['Turnover']=Turnover  
+
+        print('MR: {}, SR: {}, CR:{}, Turnover: {}'.format(MR,SR,CR,Turnover))
+        return str_params
+    
+
     
