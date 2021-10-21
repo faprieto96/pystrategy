@@ -27,6 +27,7 @@ def py_strategy(str_name, optimizer, str_params, opt_params):
     __inizialization={'initial_parameters':__inizialization}
 
     # Se corre el rollingWindowsValidation
+    #config_inicial= StrFactory.config(str_name, str_params)
     returns= StrFactory.rollingWindowsValidation(str_name, str_params)
     str_params['returns']=returns
 
@@ -45,6 +46,6 @@ _str_params = {'data':data, 'vars_validationWindows': 36, 'vars_CVWindows':12}
 _opt_params = {'lambda': 0.2, 'beta': 0.1}
 
 
-res = py_strategy(StrTypes.GMR, OptTypes.BAYES, _str_params, _opt_params)
+res = py_strategy(StrTypes.EW, OptTypes.BAYES, _str_params, _opt_params)
 print('Output:', res)
 

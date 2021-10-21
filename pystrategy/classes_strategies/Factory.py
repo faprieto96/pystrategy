@@ -1,13 +1,16 @@
 
 from config_libaries import *
 
+
 class StrFactory:
     strategies = {
         StrTypes.STR1: Str1,
-        StrTypes.STR2: Str2,
-        StrTypes.STR8: Str8,
         StrTypes.EW: EW,
+        StrTypes.EWRC: EWRC,
+        StrTypes.MD: MD,
         StrTypes.GMR: GMR,
+        StrTypes.GMV: GMV,
+        StrTypes.WUBC: WUBC,
         # Rellenar con tipos estrategias
     }
 
@@ -62,7 +65,7 @@ class StrFactory:
         return s_object.run(opt, **opt_params)
     
 
-    
+
     @staticmethod
     def MaxDrawdown(name, str_params: dict):
         s_name = StrFactory.strategies.get(name)
@@ -118,4 +121,3 @@ class StrFactory:
         return str_params
     
 
-    
