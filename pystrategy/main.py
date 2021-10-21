@@ -1,13 +1,16 @@
 from config_libaries import *
+from classes_strategies.individual_strategies.EW_strategy import EW
 
-main_path='/Users/franciscoantonioprietorodriguez/Documents/PhD/GitHub_Code_Repository/PhD/'
+
+"""main_path='/Users/franciscoantonioprietorodriguez/Documents/PhD/GitHub_Code_Repository/PhD/'
 data_path=main_path+'data/6_Emerging_Markets_8years.csv'
-data= np.matrix(pd.read_csv(data_path, header=None))
+data= np.matrix(pd.read_csv(data_path, header=None))"""
 
 
 #Generamos la funcion py_strategy que llama a la factoria y la función
 def py_strategy(str_name, optimizer, str_params, opt_params):
-    """ La documentación devuelve la siguiente información
+    """ 
+    La documentación devuelve la siguiente información
     PY STRATEGY
     
     Parameters
@@ -46,6 +49,8 @@ _str_params = {'data':data, 'vars_validationWindows': 36, 'vars_CVWindows':12}
 _opt_params = {'lambda': 0.2, 'beta': 0.1}
 
 
-res = py_strategy(StrTypes.EW, OptTypes.BAYES, _str_params, _opt_params)
+
+
+res = py_strategy(EW_Strategy, OptTypes.BAYES, _str_params, _opt_params)
 print('Output:', res)
 

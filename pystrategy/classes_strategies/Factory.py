@@ -1,9 +1,23 @@
-
+from abc import ABC
 from config_libaries import *
 
 
+class BaseNameStrategy(ABC):
+    base_strategy:Strategy
+    ...
+
+class EW_Strategy(BaseNameStrategy):
+    base_strategy=EW
+
+
+class EWRC_Strategy(BaseNameStrategy):
+    base_strategy=EWRC
+
+class MD_Strategy(BaseNameStrategy):
+    base_strategy=MD
 class StrFactory:
-    strategies = {
+    """strategies = {
+
         StrTypes.STR1: Str1,
         StrTypes.EW: EW,
         StrTypes.EWRC: EWRC,
@@ -12,19 +26,22 @@ class StrFactory:
         StrTypes.GMV: GMV,
         StrTypes.WUBC: WUBC,
         # Rellenar con tipos estrategias
-    }
+    }"""
 
     #Metodo para obtener el nombre de la estrategia seleccionada
     @staticmethod
-    def inizialization(name,str_params: dict):
-        s_name = StrFactory.strategies.get(name)
+    def inizialization(name: BaseNameStrategy,str_params: dict):
+        #s_name = StrFactory.strategies.get(name)
+        s_name=name.base_strategy
+        assert name.__class__() == BaseNameStrategy #MODIFICAR EL ASSERT PARA COMPROBAR QUE ESTÁ DENTRO DE LAS ESTRATEGIAS DEFINIDAS
         s_object = s_name(**str_params)
         return s_object.inizialization()
 
 
     @staticmethod
-    def rollingWindowsValidation(name, str_params: dict):
-        s_name = StrFactory.strategies.get(name)
+    def rollingWindowsValidation(name: BaseNameStrategy, str_params: dict):
+        #s_name = StrFactory.strategies.get(name)
+        s_name=name.base_strategy
         s_object = s_name(**str_params)
         # Save number of elements and number of assets
         (numData, N) = str_params['data'].shape
@@ -45,7 +62,7 @@ class StrFactory:
 
     #Metodo para obtener solveOptimizationProblem
     @staticmethod
-    def solveOptimizationProblem(name, str_params: dict):
+    def solveOptimizationProblem(name: BaseNameStrategy, str_params: dict):
         s_name = StrFactory.strategies.get(name)
         s_object = s_name(**str_params)
         str_params['W'] = s_object.solveOptimizationProblem(str_params)
@@ -59,7 +76,7 @@ class StrFactory:
         return s_object.run(opt, **opt_params)"""
 
     @staticmethod
-    def build(name, str_params: dict):
+    def build(name: BaseNameStrategy, str_params: dict):
         s_name = StrFactory.strategies.get(name)
         s_object = s_name(**str_params)
         return s_object.run(opt, **opt_params)
@@ -67,7 +84,7 @@ class StrFactory:
 
 
     @staticmethod
-    def MaxDrawdown(name, str_params: dict):
+    def MaxDrawdown(name: BaseNameStrategy, str_params: dict):
         s_name = StrFactory.strategies.get(name)
         s_object = s_name(**str_params)
         # Save number of elements and number of assets
@@ -100,7 +117,7 @@ class StrFactory:
         return str_params
 
     @staticmethod
-    def Output_financial_ratios(name, str_params: dict):
+    def Output_financial_ratios(name: BaseNameStrategy, str_params: dict):
         s_name = StrFactory.strategies.get(name)
         s_object = s_name(**str_params)
         # Save number of elements and number of assets

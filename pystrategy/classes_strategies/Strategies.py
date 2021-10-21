@@ -7,23 +7,17 @@ from qpsolvers import solve_qp
 import bayes_opt
 from bayes_opt import BayesianOptimization
 from numpy import ndarray
+import numpy as np
+from numpy import array, dot
+from scipy.optimize import basinhopping
+from classes_strategies.individual_strategies.EW_strategy import EW
+
 class myarray(ndarray):    
     @property
     def H(self):
         return self.conj().T
-import numpy as np
-from numpy import array, dot
-from scipy.optimize import basinhopping
 
-
-"""class myarray(ndarray):    
-    @property
-    def H(self):
-        return self.conj().T"""
-
-
-
-
+##CAMBIOS ->CAMBIAR STR A STRATEGY..
 class Str:
     def __init__(self, *args, **kwargs):
         self.args = args
@@ -69,7 +63,7 @@ class Str2(Str):
 ##################       --------        ############################
 ##################                       ##########################
 #################################################################
-class EW(Str):
+"""class EW(Str):
     def inizialization(self, *args, **kwargs):
         print('Params class:', self.args, self.kwargs)
         print('Params Strategy Run:', args, kwargs)
@@ -88,7 +82,7 @@ class EW(Str):
         
         W = np.ones((N,1))*(1/N)
         
-        return W
+        return W"""
 
 ##########################################################################
 ##################                       ################################

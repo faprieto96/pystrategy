@@ -1,0 +1,1 @@
+from classes_strategies.individual_strategies.EW_strategy import EW
